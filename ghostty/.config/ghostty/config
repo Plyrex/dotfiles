@@ -55,5 +55,5 @@ window-height=32
 keybind = ctrl+t=new_tab
 keybind = ctrl+w=close_tab:this
 font-family="Jetbrains Mono Nerd"
-background-opacity= 0.8
+background-opacity= 0.9
 unfocused-split-opacity=1
