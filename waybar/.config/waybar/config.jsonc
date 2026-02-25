@@ -33,6 +33,12 @@
     "custom/power-menu",
   ],
 
+  /*----------Separator----------*/
+  "custom/separator": {
+    "format": " | ",
+    "tooltip": false,
+  },
+
   /*----------Hyprland Workspaces-----------*/
   "hyprland/workspaces": {
     "all-outputs": true,

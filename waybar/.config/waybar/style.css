@@ -119,12 +119,18 @@ window#waybar.hidden {
 #pulseaudio,
 #bluetooth,
 #network,
+#custom-separator,
 #backlight {
     background-color: @base;
     padding: 0 7px;
-    margin: 2px 0;
+    margin: 2px 0px;
 }
 
+#custom-separator {
+    color: @mauve;
+    padding: 0px 0px;
+    margin: 0px 0px;
+}
 /*----------Bluetooth--------------------*/
 #bluetooth {
     color: @mauve;
