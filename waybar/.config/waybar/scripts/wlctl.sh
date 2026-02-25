@@ -1,6 +1,6 @@
 #!/bin/bash
 # Define your TUI application and terminal
-TUI_APP="impala"
+TUI_APP="wlctl"
 TERMINAL="ghostty" # Change to your terminal emulator (e.g., foot, alacritty)
 
 # Check if the process is already running

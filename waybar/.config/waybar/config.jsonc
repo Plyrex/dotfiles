@@ -1,28 +1,177 @@
+/***
+ *    ┓ ┏┏┓┓┏┳┓┏┓┳┓  ┏┓┏┓┳┓┏┓┳┏┓
+ *    ┃┃┃┣┫┗┫┣┫┣┫┣┫━━┃ ┃┃┃┃┣ ┃┃┓
+ *    ┗┻┛┛┗┗┛┻┛┛┗┛┗  ┗┛┗┛┛┗┻ ┻┗┛
+ */
+
+/*----------Global Properties-------------*/
 {
-  // General Settings
-  // Position TOP
   "layer": "top",
-  "margin-bottom": 0,
-  // Position BOTTOM
-  // "position": "bottom",
-  // "margin-top": 0,
-  // "margin-bottom": 14,
-  "margin-left": 0,
-  "margin-right": 0,
-  "spacing": 0,
-  // Load Modules
-  "include": ["~/.config/waybar/modules.json"],
-  // Modules Left
-  "modules-left": ["hyprland/workspaces"],
-  // Modules Center
-  "modules-center": ["hyprland/window"],
-  // Modules Right
+  "position": "top",
+  "exclusive": true,
+  "height": 30,
+
+  /*-------------Floating Margin------------*/
+  "margin-top": 3,
+
+  /*----------Modules Left------------------*/
+  "modules-left": ["custom/launcher", "hyprland/workspaces"],
+
+  /*----------Modules Center----------------*/
+  "modules-center": ["clock"],
+
+  /*----------Modules Right-----------------*/
   "modules-right": [
+    "tray",
     "pulseaudio",
     "bluetooth",
-    "battery",
     "network",
-    "custom/exit",
-    "clock",
+    "backlight",
+    "battery",
+    "idle_inhibitor",
+    "custom/notification",
+    "custom/power-menu",
   ],
+
+  /*----------Hyprland Workspaces-----------*/
+  "hyprland/workspaces": {
+    "all-outputs": true,
+    "active-only": false,
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "default": "",
+      "active": "󰮯",
+    },
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5],
+    },
+  },
+
+  /*---------------Tray--------------------*/
+  "tray": {
+    "spacing": 10,
+  },
+
+  /*---------------Clock-------------------*/
+  "clock": {
+    "format": "󰥔 {:%I:%M:%S %p} ",
+    "interval": 1,
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "format": {
+        "today": "<span color='#fAfBfC'><b>{}</b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "shift_down",
+      "on-click": "shift_up",
+    },
+  },
+
+  /*---------------Bluetooth---------------*/
+  "bluetooth": {
+    "format": "",
+    "format-off": "󰂲",
+    "format-connected": "󰂱",
+    "format-disabled": "󰂲",
+    "on-click": "~/.config/waybar/scripts/bluetui.sh",
+  },
+
+  /*---------------CPU---------------------*/
+  "cpu": {
+    "interval": 10,
+    "format": "  {}%",
+    "max-length": 10,
+  },
+
+  /*---------------Memory------------------*/
+  "memory": {
+    "interval": 30,
+    "format": "  {}%",
+    "format-alt": " {used:0.1f}GB",
+    "max-length": 10,
+  },
+
+  /*---------------Backlight---------------*/
+  "backlight": {
+    "device": "eDP-1",
+    "format": "{icon}",
+    "tooltip-format": "{percent}",
+    "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
+  },
+
+  /*---------------Network-----------------*/
+  "network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰖪",
+    "tooltip-format": "{essid}",
+    "on-click": "~/.config/waybar/scripts/wlctl.sh",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+  },
+
+  /*---------------Pulseaudio--------------*/
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} ",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["", "", "󰕾"],
+    },
+    "on-click": "~/.config/waybar/scripts/wiremix.sh",
+  },
+
+  /*---------------Battery-----------------*/
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+  },
+
+  /*---------------Weather-----------------*/
+  "custom/weather": {
+    "format": "{}",
+    "interval": 3600,
+    "return-type": "json",
+    "exec": "$HOME/.config/waybar/scripts/Weather.py",
+    "tooltip": true,
+  },
+
+  /*-----------Idle Inhibitor---------------*/
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰅶",
+      "deactivated": "󰾪",
+    },
+  },
+
+  /*-----------Notification Center---------*/
+  "custom/notification": {
+    "tooltip": false,
+    "format": "",
+    "on-click": "swaync-client -t -sw",
+    "escape": true,
+  },
+
+  /*---------------Power Menu---------------*/
+  "custom/power-menu": {
+    "format": "",
+    "on-click": "wlogout",
+  },
+
+  /*---------------Launcher----------------*/
+  "custom/launcher": {
+    "format": "󰣇",
+    "tooltip": false,
+    "on-click": "walker",
+  },
 }
