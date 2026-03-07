@@ -7,3 +7,18 @@ anchor_top = false
 anchor_bottom = true
 anchor_left = true
 anchor_right = true
+
+[providers]
+# Providers queried by default (when no prefix used)
+default = [
+  "desktopapplications",
+  "calc",
+]
+
+# Providers shown when search is empty
+empty = ["desktopapplications"]
+
+# Calculator
+[[providers.prefixes]]
+prefix = "="
+provider = "calc"
