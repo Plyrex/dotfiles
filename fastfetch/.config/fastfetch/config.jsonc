@@ -182,6 +182,7 @@
       "type": "disk",
       "key": "│ ├󰍛",
       "keyColor": "blue",
+      "format":"{name} - {size-used} / {size-total} ({size-percentage})"
     },
     {
       "type": "memory",
